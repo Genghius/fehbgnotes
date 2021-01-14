@@ -1,0 +1,10 @@
+#!/bin/sh
+PATHTONOTES=~/.local/notes.txt
+[ "$1" ] && image=$1 || image=$(grep -o "/[^']*" ~/.fehbg | sed -e '$!d')
+[ "$2" ] && TEXTCOLOR=$2 || TEXTCOLOR=white
+[ "$3" ] && TEXTSIZE=$3 || TEXTSIZE=30
+
+convert "$image" -gravity West -pointsize "$TEXTSIZE" -fill "$TEXTCOLOR" -font $(convert -list font | awk "{ a[NR] = \$2 } /family: $(fc-match sans -f "%{family}\n")/ { print a[NR-1]; exit }") -annotate +$(($(identify -format "%w" "$image") / 100))+0 "$(cat $PATHTONOTES)" "out"
+
+feh --no-fehbg --bg-max "out"
+rm "out"

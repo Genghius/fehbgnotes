@@ -1,0 +1,18 @@
+fehbgnotes
+
+________________________________________________________________________________
+
+Add text from a notes.txt file to the wallpaper (the ~/.fehbg file needs to have been generated).
+
+needs imagemagick.
+
+usage:
+  fehbgnotes
+or:
+  fehbgnotes [PATHTOFILE] [TEXTCOLOR] [TEXTSIZE]
+
+the file from which notes are extracted can be set with the variable PATHTONOTES
+
+can be installed by moving file to ~/.local/bin
+
+  cp fehbgnotes ~/.local/bin
